@@ -1,28 +1,22 @@
-package lab2;
+package lab1;
 
 /**
- * Describe responsibilities here.
- *
- * @author your name goes here
- * @version 1.00
+ * Abstract superclass for all courses.
  */
-public class IntroToProgrammingCourse implements Course {
-
+public abstract class Course {
     private String courseName;
     private String courseNumber;
     private double credits;
 
-    public IntroToProgrammingCourse(String courseName, String courseNumber) {
-        this.setCourseName(courseName);
-        this.setCourseNumber(courseNumber);
+    public Course(String courseName, String courseNumber) {
+        setCourseName(courseName);
+        setCourseNumber(courseNumber);
     }
 
-    @Override
     public String getCourseName() {
         return courseName;
     }
 
-    @Override
     public final void setCourseName(String courseName) {
         if (courseName == null || courseName.isBlank()) {
             throw new IllegalArgumentException("Course name is required");
@@ -30,12 +24,10 @@ public class IntroToProgrammingCourse implements Course {
         this.courseName = courseName;
     }
 
-    @Override
     public String getCourseNumber() {
         return courseNumber;
     }
 
-    @Override
     public final void setCourseNumber(String courseNumber) {
         if (courseNumber == null || courseNumber.isBlank()) {
             throw new IllegalArgumentException("Course number is required");
@@ -43,12 +35,10 @@ public class IntroToProgrammingCourse implements Course {
         this.courseNumber = courseNumber;
     }
 
-    @Override
     public double getCredits() {
         return credits;
     }
 
-    @Override
     public void setCredits(double credits) {
         if (credits < 0.5 || credits > 4.0) {
             throw new IllegalArgumentException("Credits must be between 0.5 and 4.0");
@@ -56,16 +46,5 @@ public class IntroToProgrammingCourse implements Course {
         this.credits = credits;
     }
 
-    @Override
-    public String getPrerequisites() {
-        return "None";
-    }
-
-    @Override
-    public void setPrerequisites(String prerequisites) {
-        if (prerequisites != null && !prerequisites.isBlank()) {
-            throw new IllegalArgumentException("Intro to Programming has no prerequisites");
-        }
-    }
-
+    public abstract String getPrerequisites();
 }

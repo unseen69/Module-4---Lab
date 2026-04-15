@@ -1,50 +1,21 @@
 package lab1;
 
-/**
- * Describe responsibilities here.
- *
- * @author your name goes here
- * @version 1.00
- */
-public class IntroJavaCourse {
-
-    String courseName;
-    double credits;
-    String prerequisites;
-    private String courseNumber;
+public class IntroJavaCourse extends Course {
+    private String prerequisites = "Intro to Programming";
 
     public IntroJavaCourse(String courseName, String courseNumber) {
-        this.courseName = courseName;
-        this.courseNumber = courseNumber;
+        super(courseName, courseNumber);
     }
 
-    public String getCourseNumber() {
-        return courseNumber;
-    }
-
-    public void setCourseNumber(String courseNumber) {
-        this.courseNumber = courseNumber;
-    }
-
-    public double getCredits() {
-        return credits;
-    }
-
-    public void setCredits(double credits) {
-        if (credits < 0 || credits > 5.0) {
-            System.out.println(
-                    "Error: credits must be in the range 0.5 to 4.0");
-            System.exit(0);
-        }
-        this.setCredits(credits);
-    }
-
+    @Override
     public String getPrerequisites() {
         return prerequisites;
     }
 
     public void setPrerequisites(String prerequisites) {
+        if (prerequisites == null || prerequisites.isBlank()) {
+            throw new IllegalArgumentException("Prerequisites are required");
+        }
         this.prerequisites = prerequisites;
     }
-
 }
